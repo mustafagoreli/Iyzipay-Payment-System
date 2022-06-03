@@ -1,0 +1,7 @@
+DEPLOYMENT=PRODUCTION
+HTTPS_ENABLED=false
+PORT=8080
+LOGGER=tiny 
+MONGO_URI=mongodb+srv://payment-system-backend:pIBLrNAA0EOFn9Yb@cluster0.womp1.mongodb.net/payments-system-production?retryWrites=true&w=majority
+JWT_SECRET=DKDKFGDJGD_asdasfasfaFASFASFAF12313dasdasfdasADAS
+END_POINT=https://mustafagoreli-payment1.heroku/api

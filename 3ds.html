@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>iyzico Mock 3D-Secure Processing Page</title>
+</head>
+<body>
+<form id="iyzico-3ds-form" action="https://sandbox-api.iyzipay.com/payment/mock/init3ds" method="post">
+    <input type="hidden" name="orderId" value="mock12-9243753121541563iyziord">
+    <input type="hidden" name="bin" value="552879">
+    <input type="hidden" name="successUrl" value="https://sandbox-api.iyzipay.com/payment/iyzipos/callback3ds/success/3">
+    <input type="hidden" name="failureUrl" value="https://sandbox-api.iyzipay.com/payment/iyzipos/callback3ds/failure/3">
+    <input type="hidden" name="confirmationUrl" value="https://sandbox-api.iyzipay.com/payment/mock/confirm3ds">
+    <input type="hidden" name="PaReq" value="abc72922-7e16-4e90-b09c-2aad20a9a96a">
+</form>
+<script type="text/javascript">
+    document.getElementById("iyzico-3ds-form").submit();
+</script>
+</body>
+</html>

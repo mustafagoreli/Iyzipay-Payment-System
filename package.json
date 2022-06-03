@@ -1,0 +1,62 @@
+{
+  "name": "iyzipay-egitim",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx @babel/node",
+    "dev": "npx nodemon --exec npx @babel/node ./src/index.js dev --watch",
+    "production": "npm run build && node build/index.js",
+    "build": "npx babel src --out-dir=./build --copy-files",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dockerize": "npm run build && docker build -t cangokceaslan/payment-system-dockerize .",
+    "dockerize:images": "docker images",
+    "dockerize:start": "docker run --name payment-system -p 80:8080 -d cangokceaslan/payment-system-dockerize:latest",
+    "dockerize:logs": "docker logs payment-system",
+    "dockerize:restart": "docker restart payment-system",
+    "dockerize:stop": "docker stop payment-system",
+    "dockerize:kill": "docker rm payment-system --force",
+    "dockerize:delete": "docker rmi cangokceaslan/payment-system-dockerize --force",
+    "dockerize:exec": "docker exec -it payment-system /bin/bash"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mustafagoreli/Iyzipay-Egitim.git"
+  },
+  "author": "Mustafa Göreli",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mustafagoreli/Iyzipay-Egitim/issues"
+  },
+  "homepage": "https://github.com/mustafagoreli/Iyzipay-Egitim#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.17.10",
+    "@babel/node": "^7.17.10",
+    "@babel/preset-env": "^7.17.10",
+    "@babel/register": "^7.17.7"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-async-errors": "^3.1.1",
+    "helmet": "^5.1.0",
+    "https": "^1.0.0",
+    "iyzipay": "^2.0.48",
+    "jsonwebtoken": "^8.5.1",
+    "loadash": "^1.0.0",
+    "moment": "^2.29.3",
+    "mongoose": "^6.3.3",
+    "mongose": "^0.0.2-security",
+    "morgan": "^1.10.0",
+    "nanoid": "^3.3.4",
+    "nodemon": "^2.0.16",
+    "passport": "^0.5.3",
+    "passport-jwt": "^4.0.0",
+    "password": "^0.1.1",
+    "uuid": "^8.3.2"
+  },
+  "description": ""
+}

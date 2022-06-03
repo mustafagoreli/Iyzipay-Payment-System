@@ -1,0 +1,6 @@
+payment-system-backend
+
+pIBLrNAA0EOFn9Yb
+
+
+MONGO_URI=mongodb+srv://payment-system-backend:pIBLrNAA0EOFn9Yb@cluster0.womp1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority

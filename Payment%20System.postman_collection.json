@@ -1,0 +1,574 @@
+{
+	"info": {
+		"_postman_id": "0e7f968a-87b8-4144-93ad-d2105ad28d22",
+		"name": "Payment System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authorization",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"email@email.com\",\n    \"password\":\"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cards",
+			"item": [
+				{
+					"name": "Create Card",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"card\": {\n        \"cardAlias\": \"Yeni Kredi Kartım\",\n        \"cardHolderName\": \"John Doe\",\n        \"cardNumber\": \"5528790000000008\",\n        \"expireMonth\": \"12\",\n        \"expireYear\": \"2030\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/cards",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cards"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read Cards",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/cards",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cards"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Card",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cardToken\":\"xSVxl9Xh0Qp15FoNHTjdytwAXrM=\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/cards/delete-by-token",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cards",
+								"delete-by-token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Card by Index",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/cards/2/delete-by-index",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cards",
+								"2",
+								"delete-by-index"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Installements",
+			"item": [
+				{
+					"name": "Check Installments",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"binNumber\": \"554960\",\n    \"price\": \"100000\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/installments",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"installments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Installments with Cart Id",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"binNumber\": \"554960\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/installments/61d05524bf858c7449e9d456",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"installments",
+								"61d05524bf858c7449e9d456"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payments",
+			"item": [
+				{
+					"name": "Payment with new Card",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"card\":{\n        \"cardHolderName\": \"John Doe\",\n        \"cardNumber\": \"5528790000000008\",\n        \"expireMonth\": \"12\",\n        \"expireYear\": \"2030\",\n        \"cvc\": \"123\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/payments/61d05524bf858c7449e9d456/with-new-card",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"payments",
+								"61d05524bf858c7449e9d456",
+								"with-new-card"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment with new Card and Register Card",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"card\":{\n        \"cardAlias\":\"AAAAAAAAAAAAAAAA\",\n        \"cardHolderName\": \"John Doe\",\n        \"cardNumber\": \"5528790000000008\",\n        \"expireMonth\": \"12\",\n        \"expireYear\": \"2030\",\n        \"cvc\": \"123\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/payments/61d05524bf858c7449e9d456/with-new-card/register-card",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"payments",
+								"61d05524bf858c7449e9d456",
+								"with-new-card",
+								"register-card"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment with Registered Card with Index",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/payments/61d05524bf858c7449e9d456/0/with-registered-card-index",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"payments",
+								"61d05524bf858c7449e9d456",
+								"0",
+								"with-registered-card-index"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment with Registered Card with Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cardToken\":\"rcRwVIfkoDGNHWciVQeZxg5DFMU=\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/payments/61d05524bf858c7449e9d456/with-registered-card-token",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"payments",
+								"61d05524bf858c7449e9d456",
+								"with-registered-card-token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PaymentsThreeDS",
+			"item": [
+				{
+					"name": "Payment with new Card",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"card\":{\n        \"cardHolderName\": \"John Doe\",\n        \"cardNumber\": \"5528790000000008\",\n        \"expireMonth\": \"12\",\n        \"expireYear\": \"2030\",\n        \"cvc\": \"123\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/threeds/payments/61d05524bf858c7449e9d456/with-new-card",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"threeds",
+								"payments",
+								"61d05524bf858c7449e9d456",
+								"with-new-card"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment with new Card and Register Card",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"card\":{\n        \"cardAlias\":\"Halk Bank Kartım\",\n        \"cardHolderName\": \"John Doe\",\n        \"cardNumber\": \"5528790000000008\",\n        \"expireMonth\": \"12\",\n        \"expireYear\": \"2030\",\n        \"cvc\": \"123\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/threeds/payments/61d05524bf858c7449e9d456/with-new-card/register-card",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"threeds",
+								"payments",
+								"61d05524bf858c7449e9d456",
+								"with-new-card",
+								"register-card"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment with Registered Card with Index",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/threeds/payments/61d05524bf858c7449e9d456/0/with-registered-card-index",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"threeds",
+								"payments",
+								"61d05524bf858c7449e9d456",
+								"0",
+								"with-registered-card-index"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment with Registered Card with Index Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cardToken\":\"rcRwVIfkoDGNHWciVQeZxg5DFMU=\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/threeds/payments/61d05524bf858c7449e9d456/with-registered-card-token",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"threeds",
+								"payments",
+								"61d05524bf858c7449e9d456",
+								"with-registered-card-token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Checkout Forms",
+			"item": [
+				{
+					"name": "Initialize a checkout form",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/checkout/61d05524bf858c7449e9d456",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"checkout",
+								"61d05524bf858c7449e9d456"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read Checkout Form",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\":\"7412b47d-ebce-4fb2-9fc0-bfdb9fcd697b\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/checkout/complete/payment",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"checkout",
+								"complete",
+								"payment"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cancel Payments",
+			"item": [
+				{
+					"name": "Cancel Payments",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"reason\":\"buyer_request\",\n    \"description\":\"Kullanıcı ödemesinin iptal edilmesini istedi\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/payments/6223dacbbff0393a1bae081c/cancel",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"payments",
+								"6223dacbbff0393a1bae081c",
+								"cancel"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Refund Payments",
+			"item": [
+				{
+					"name": "Refund Payments",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"reason\":\"buyer_request\",\n    \"description\":\"Kullanıcı ödemesinin iptal edilmesini istedi\",\n    \"refundPrice\":13000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/payments/18390956/refund",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"payments",
+								"18390956",
+								"refund"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "https://localhost/api"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWQwNTRkZTBkOGFmMTk1MTllODhhNjEiLCJ1aWQiOiIzanlUQjM4N2Rya3llOGdpTVpudiIsImxvY2FsZSI6InRyIiwicm9sZSI6InVzZXIiLCJuYW1lIjoiSm9obiIsInN1cm5hbWUiOiJEb2UiLCJlbWFpbCI6ImVtYWlsQGVtYWlsLmNvbSIsInBob25lTnVtYmVyIjoiKzkwNTM1MDAwMDAwMCIsImlkZW50aXR5TnVtYmVyIjoiNzQzMDA4NjQ3OTEiLCJhdmF0YXJVcmwiOiJodHRwczovL2kucHJhdmF0YXIuY2MvMzAwIiwiYXZhdGFyQ29sb3IiOiIxODRkNGIiLCJhZGRyZXNzIjoiTmlkYWt1bGUgR8O2enRlcGUsIE1lcmRpdmVua8O2eSBNYWguIEJvcmEgU29rLiBObzoxIiwiY2l0eSI6IklzdGFuYnVsIiwiY291bnRyeSI6IlR1cmtleSIsInppcENvZGUiOiIzNDczMiIsImlwIjoiODUuMzQuNzguMTEyIiwiY3JlYXRlZEF0IjoiMjAyMi0wMy0wNVQyMTozNjoxMy40NzVaIiwidXBkYXRlZEF0IjoiMjAyMi0wMy0wNVQyMTozNjoxMy40NzVaIiwiaWF0IjoxNjQ2NTE2MzcyfQ._udKdGuv4RrBcdqwyxQwTK-NR0y-NmJJzEoNqO4pw-0",
+			"type": "default"
+		}
+	]
+}
